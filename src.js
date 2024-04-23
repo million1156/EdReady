@@ -1,4 +1,4 @@
-
+// NOTE: This is the original source code, I have not modified it at all except for removing information & adding this comment!
 var player;
 var zendeskStarted = false;
 var hasBeenAnswered = false;

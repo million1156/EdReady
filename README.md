@@ -22,7 +22,7 @@ Enjoy! :)
 
 EdReady has a multitude of vulns, however, only 1 of them were tested, the other examples here are purely theoretical. The first one is suprisingly simple.
 
-### The tales of nrocQuestionPlayer..
+### Part 1: The tales of nrocQuestionPlayer..
 EdReady has a sort of "framework" called "nrocQuestionPlayer" that is hardcoded into the DOM. This has many different functions, such as "loadQuestion", "loadPlayer", "submitQuestion", and "getState", but none of these are vulnerable. It's actually "showAnswer"! If it wasn't obvious, this, well, shows the answer to the "player" (aka client). However, this performs **0** checks **at all**, meaning you can easily have the answer given to you, and it not counted wrong, nor does it take any points away from you. 
 
 
@@ -45,14 +45,14 @@ nrocQuestionPlayer.showAnswer();
 
 Therefore, by calling `nrocQuestionPlayer.showAnswer();`, you're able to easily call this function, have the answer highlighted, click on the right answer, and both the client and the server count your answer as correct, therefore allowing you to cheat exam(s).
 
-### We love email! Right..?
+### Part 2: We love email! Right..?
 This and the next one(s) are purely theoretical as said above, so please keep that in mind :)
 
 This has to do again with the client-sided code, but this time, it has to do with "progess emails". 
 
 Essentially, EdReady will occasionally send both the instructor & student "progress" emails intended to inform both parties about the student's progress within the course. However, on first glance, there does not seem to be any e-mail validation, meaning, someone with an authenticated account (this would essentially just equate to someone who is logged into any account on the same domain, so for example, another student) could send any email to *anybody*, with it appearing to come from *edready.org! However, I have not tested this, so please take this with a heavy grain of salt.
 
-### Requests, requests, requests!
+### Part 3: Requests, requests, requests!
 When submitting an answer to the server, the client formats it like this:
 ```json
 {
@@ -74,7 +74,7 @@ Notice how there is a `correct` parameter? This makes it very possible for someo
 There is also a `possiblePoints` and `scoredPoints` parameter, however I am personally not sure what they do, so they most likely are "useless" in nature.
 
 
-## And that's it!
+# And that's it!
 
 That's all that I really have to say about this, I hope this is interesting for at least somebody :)
 
