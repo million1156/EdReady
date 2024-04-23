@@ -23,7 +23,7 @@ Enjoy! :)
 EdReady has a multitude of vulns, however, only 1 of them were tested, the other examples here are purely theoretical. The first one is suprisingly simple.
 
 ### Part 1: The tales of nrocQuestionPlayer..
-EdReady has a sort of "framework" called "nrocQuestionPlayer" that is hardcoded into the DOM. This has many different functions, such as "loadQuestion", "loadPlayer", "submitQuestion", and "getState", but none of these are vulnerable. It's actually "showAnswer"! If it wasn't obvious, this, well, shows the answer to the "player" (aka client). However, this performs **0** checks **at all**, meaning you can easily have the answer given to you, and it not counted wrong, nor does it take any points away from you. 
+EdReady has a sort of "framework" called "nrocQuestionPlayer" that is hardcoded into the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model). This has many different functions, such as "loadQuestion", "loadPlayer", "submitQuestion", and "getState", but none of these are vulnerable. It's actually ["showAnswer"](https://github.com/million1156/EdReady/blob/main/src.js#L326)! If it wasn't obvious, this, well, shows the answer to the "player" (aka client). However, this performs **0** checks **at all**, meaning you can easily have the answer given to you, and it not counted wrong, nor does it take any points away from you. 
 
 
 The interesting part about this is that the client itself *tries* to do authentication, but this is very easily bypassed by calling the function directly instead:
