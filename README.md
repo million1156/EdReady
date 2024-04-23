@@ -44,7 +44,8 @@ When submitting an answer to the server, the client formats it like this:
     groupAssessmentId: 12345,
     hold: "isQuestionOnHold",
     totalQuestionsHeld: 55,
-}```
+}
+```
 
 Notice how there is a `correct` parameter? This makes it very possible for someone to forge a request, claim the answer is correct, and it'll be marked down as correct. This one is a little less theoretical, as testing this seems to prove my theory is correct, but it most likely depends (e.g if the answer you chose was *actually* correct or not).
 
