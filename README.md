@@ -23,7 +23,27 @@ Enjoy! :)
 EdReady has a multitude of vulns, however, only 1 of them were tested, the other examples here are purely theoretical. The first one is suprisingly simple.
 
 ### The tales of nrocQuestionPlayer..
-EdReady has a sort of "framework" called "nrocQuestionPlayer" that is hardcoded into the DOM. This has many different functions, such as "loadQuestion", "loadPlayer", "submitQuestion", and "getState", but none of these are vulnerable. It's actually "showAnswer"! If it wasn't obvious, this, well, shows the answer to the "player" (aka client). However, this performs **0** checks **at all**, meaning you can easily have the answer given to you, and it not counted wrong, nor does it take any points away from you. Therefore, by calling `nrocQuestionPlayer.showAnswer();`, you're able to easily call this function, have the answer highlighted, click on the right answer, and both the client and the server count your answer as correct, therefore allowing you to cheat exam(s).
+EdReady has a sort of "framework" called "nrocQuestionPlayer" that is hardcoded into the DOM. This has many different functions, such as "loadQuestion", "loadPlayer", "submitQuestion", and "getState", but none of these are vulnerable. It's actually "showAnswer"! If it wasn't obvious, this, well, shows the answer to the "player" (aka client). However, this performs **0** checks **at all**, meaning you can easily have the answer given to you, and it not counted wrong, nor does it take any points away from you. 
+
+
+The interesting part about this is that the client itself *tries* to do authentication, but this is very easily bypassed by calling the function directly instead:
+```js
+function provideAnswerFeedback() {
+    keepAliveAssessment();
+    // Tries to make sure it's already been answered..
+    if (hasBeenAnswered) {
+
+        getAnswerDetails();
+        // But by calling this directly, the check above is bypassed!
+        nrocQuestionPlayer.showAnswer(); 
+        /* misc code... */
+}
+}
+// By calling showAnswer, we can highlight the correct answer :)
+nrocQuestionPlayer.showAnswer();
+```
+
+Therefore, by calling `nrocQuestionPlayer.showAnswer();`, you're able to easily call this function, have the answer highlighted, click on the right answer, and both the client and the server count your answer as correct, therefore allowing you to cheat exam(s).
 
 ### We love email! Right..?
 This and the next one(s) are purely theoretical as said above, so please keep that in mind :)
