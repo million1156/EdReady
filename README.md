@@ -2,6 +2,8 @@
 
 > [!WARNING]
 > There is no issue that can leak user data, credentials, etc. This purely contains information that allows somebody to bypass the whole point of EdReady (that is, to *prepare* students). Also note this was written quite awhile ago, although these issues should still be prevelant (based on talking to friends who are in High School). I decided to publish this now as I don't use EdReady anymore, so I don't have a use for "hoarding" this.
+
+> [!NOTE]
 > When I reference "vulns", I more so mean "lapses".
 
 This is a small writeup about NROCPortal, EdReady, whatever you'd like to call it.
@@ -54,4 +56,6 @@ There is also a `possiblePoints` and `scoredPoints` parameter, however I am pers
 
 ## And that's it!
 
-That's all that I really have to say about this, I hope this is interesting for at least somebody!
+That's all that I really have to say about this, I hope this is interesting for at least somebody :)
+
+I probably won't remember much, but if you have any questions about this, please feel free to email me at [contact@alyocord.com](mailto:contact@alyocord.com)
