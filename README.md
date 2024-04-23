@@ -6,9 +6,9 @@
 
 This is a small writeup about NROCPortal, EdReady, whatever you'd like to call it.
 
-If you are looking for the "source code" I am referencing, you can find it at `/src.js`.
+If you are looking for the "source code" I am referencing, you can find it [here](https://github.com/million1156/EdReady/blob/main/src.js).
 
-For the way I was able to determine all possible `nrocQuestionPlayer` "child functions", you can view `printChildren.js`.
+For the way I was able to determine all possible `nrocQuestionPlayer` "child functions", you can view [printChildren.js](https://github.com/million1156/EdReady/blob/main/printChildren.js).
 
 Enjoy! :)
 
@@ -50,3 +50,8 @@ When submitting an answer to the server, the client formats it like this:
 Notice how there is a `correct` parameter? This makes it very possible for someone to forge a request, claim the answer is correct, and it'll be marked down as correct. This one is a little less theoretical, as testing this seems to prove my theory is correct, but it most likely depends (e.g if the answer you chose was *actually* correct or not).
 
 There is also a `possiblePoints` and `scoredPoints` parameter, however I am personally not sure what they do, so they most likely are "useless" in nature.
+
+
+## And that's it!
+
+That's all that I really have to say about this, I hope this is interesting for at least somebody!
